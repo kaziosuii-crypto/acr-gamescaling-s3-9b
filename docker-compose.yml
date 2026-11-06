@@ -1,0 +1,21 @@
+services:
+  gamescaling:
+    image: crpi-1jy2xtmkqkdwjcgv.cn-shanghai.personal.cr.aliyuncs.com/peiyang/gamescaling-s3-9b:latest
+    container_name: gamescaling
+    ports:
+      - "8000:8000"
+    shm_size: "16gb"
+    environment:
+      # PORT: "8000"
+      # TENSOR_PARALLEL_SIZE: "1"
+      # GPU_MEM_UTIL: "0.85"
+      # MAX_MODEL_LEN: "32768"
+      # VLLM_API_KEY: ""
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: ["gpu"]
+    restart: unless-stopped

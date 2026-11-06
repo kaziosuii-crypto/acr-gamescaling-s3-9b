@@ -1,0 +1,12 @@
+# Keep the build context minimal: only the Dockerfile and the four server
+# files are needed to build the image. The official client/prompts/examples
+# live in caller-reference/ and are NOT part of the image.
+caller-reference/
+README.md
+CHECKLIST.md
+docker-compose.yml
+.git/
+.gitignore
+*.zip
+**/__pycache__/
+**/*.pyc

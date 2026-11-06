@@ -1,0 +1,8 @@
+# Server-side runtime requirements.
+#
+# The inference engine itself (vLLM 0.17.0 + CUDA + PyTorch) is already baked
+# into the base image vllm/vllm-openai:v0.17.0 -- do NOT pip install vllm
+# here, that would re-download torch and blow the build budget.
+#
+# requests is used by the in-image self test (smoke_test.py).
+requests>=2.31
