@@ -1,0 +1,9 @@
+﻿FROM alpine:3.20
+RUN echo "=== df -h ===" && df -h ; \
+    echo "=== df -i ===" && df -i ; \
+    echo "=== mounts ===" && cat /proc/mounts ; \
+    echo "=== meminfo ===" && head -3 /proc/meminfo ; \
+    echo "=== nproc ===" && nproc ; \
+    echo "=== write test 2GB ===" && dd if=/dev/zero of=/probe.bin bs=1M count=2048 2>&1 | tail -2 ; \
+    ls -lh /probe.bin ; rm -f /probe.bin ; \
+    echo "=== probe done ==="
